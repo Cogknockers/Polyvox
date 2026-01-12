@@ -1,0 +1,26 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Washoe County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-120.35, 39.95],
+            [-119.60, 39.95],
+            [-119.42, 39.78],
+            [-119.40, 39.50],
+            [-119.55, 39.20],
+            [-120.25, 39.20],
+            [-120.40, 39.45],
+            [-120.35, 39.95]
+          ]
+        ]
+      }
+    }
+  ]
+}

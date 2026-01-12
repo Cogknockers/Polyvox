@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"lmStudioCopilot.serverUrl": "http://192.168.1.228:1234",
+		"lmStudioCopilot.terminalProtection": true,
+		"lmStudioCopilot.realTimeWatch": true,
+		"lmStudioCopilot.allowFileModifications": true,
+		"chatgpt.openOnStartup": false,
+		"chatgpt.commentCodeLensEnabled": false,
+		"editor.mouseWheelZoom": true,
+		"editor.formatOnPaste": true
+	}
+}
