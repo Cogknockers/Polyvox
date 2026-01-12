@@ -1,0 +1,17 @@
+[
+  {
+    "key": "ctrl+alt+s",
+    "command": "workbench.action.tasks.runTask",
+    "args": "Git: Sync (pull --rebase)"
+  },
+  {
+    "key": "ctrl+alt+c",
+    "command": "workbench.action.tasks.runTask",
+    "args": "Git: Commit + Push (prompt message, Husky gated)"
+  },
+  {
+    "key": "ctrl+alt+b",
+    "command": "workbench.action.tasks.runTask",
+    "args": "Git: New WIP branch (prompt name) + push"
+  }
+]

@@ -1,0 +1,101 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Git: Sync (pull --rebase)",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-NoProfile",
+        "-Command",
+        "git status; git pull --rebase"
+      ],
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Git: Status (quick)",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-NoProfile",
+        "-Command",
+        "git status; Write-Host ''; git --no-pager log --oneline --decorate -5"
+      ],
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Git: Commit (prompt message, Husky gated)",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-NoProfile",
+        "-Command",
+        "git add -A; git status; $msg = Read-Host 'Commit message'; if ([string]::IsNullOrWhiteSpace($msg)) { Write-Host 'Commit message required'; exit 1 }; git commit -m \"$msg\""
+      ],
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Git: Push",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-NoProfile",
+        "-Command",
+        "git push"
+      ],
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Git: Commit + Push (prompt message, Husky gated)",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-NoProfile",
+        "-Command",
+        "git add -A; git status; $msg = Read-Host 'Commit message'; if ([string]::IsNullOrWhiteSpace($msg)) { Write-Host 'Commit message required'; exit 1 }; git commit -m \"$msg\"; git push"
+      ],
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Git: New WIP branch (prompt name) + push",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-NoProfile",
+        "-Command",
+        "$name = Read-Host 'Branch name (e.g. wip/reputation)'; if ([string]::IsNullOrWhiteSpace($name)) { Write-Host 'Branch name required'; exit 1 }; git checkout -b $name; git push -u origin $name"
+      ],
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Git: Merge current branch -> main (no-ff) + push",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-NoProfile",
+        "-Command",
+        "$branch = (git rev-parse --abbrev-ref HEAD).Trim(); if ($branch -eq 'main') { Write-Host 'Already on main.'; exit 1 }; git checkout main; git pull --rebase; git merge --no-ff $branch; git push; Write-Host \"Merged $branch into main. You can now delete it if you want.\""
+      ],
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Git: Delete current branch (local + remote)",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-NoProfile",
+        "-Command",
+        "$branch = (git rev-parse --abbrev-ref HEAD).Trim(); if ($branch -eq 'main') { Write-Host 'Refusing to delete main.'; exit 1 }; git checkout main; git branch -d $branch; git push origin --delete $branch"
+      ],
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
+    }
+  ]
+}
