@@ -12,6 +12,8 @@
 		"chatgpt.openOnStartup": false,
 		"chatgpt.commentCodeLensEnabled": false,
 		"editor.mouseWheelZoom": true,
-		"editor.formatOnPaste": true
+		"editor.formatOnPaste": true,
+		"git.autofetch": true,
+		"git.enableSmartCommit": true
 	}
 }

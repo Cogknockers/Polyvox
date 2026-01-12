@@ -2,12 +2,15 @@
   "name": "polyvox",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
+"scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint",
+  "lint:fix": "next lint --fix",
+  "typecheck": "tsc -p tsconfig.json --noEmit",
+  "prepare": "husky"
+},
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.6",
     "@radix-ui/react-avatar": "^1.1.11",
@@ -50,6 +53,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
+    "husky": "^9.1.7",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
