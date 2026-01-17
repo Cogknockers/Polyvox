@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-import AppHeaderShell from "@/components/app/app-header-shell";
 import UpdatesFeed from "@/components/dashboard/updates-feed";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -134,7 +133,6 @@ export default async function DashboardPage({
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
-      <AppHeaderShell showFilters={false} />
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 md:py-10">
         <div className="space-y-6">
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">

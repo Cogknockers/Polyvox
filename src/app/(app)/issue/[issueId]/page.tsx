@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import AppHeaderShell from "@/components/app/app-header-shell";
 import FollowButton from "@/components/follows/follow-button";
 import NotifyEntityDialog from "@/components/entities/notify-entity-dialog";
 import CreatePostDialog from "@/components/posts/create-post-dialog";
@@ -249,7 +248,6 @@ export default async function IssueDetailPage({
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
-      <AppHeaderShell showFilters={false} />
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 md:py-10">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <Button asChild variant="ghost" size="sm">
