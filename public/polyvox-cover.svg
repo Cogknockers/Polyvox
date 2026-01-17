@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Polyvox abstract cover">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#1b2332" />
+      <stop offset="1" stop-color="#2a3348" />
+    </linearGradient>
+    <radialGradient id="glow" cx="0.2" cy="0.2" r="0.6">
+      <stop offset="0" stop-color="#5a7dff" stop-opacity="0.5" />
+      <stop offset="1" stop-color="#5a7dff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)" />
+  <rect width="1200" height="900" fill="url(#glow)" />
+  <g opacity="0.6" stroke="#8fb0ff" stroke-width="2">
+    <circle cx="250" cy="220" r="140" fill="none" />
+    <circle cx="820" cy="160" r="110" fill="none" />
+    <circle cx="930" cy="620" r="160" fill="none" />
+    <circle cx="360" cy="700" r="180" fill="none" />
+  </g>
+  <g opacity="0.4" fill="#8fb0ff">
+    <circle cx="520" cy="420" r="6" />
+    <circle cx="620" cy="480" r="4" />
+    <circle cx="700" cy="360" r="5" />
+    <circle cx="420" cy="300" r="5" />
+    <circle cx="860" cy="520" r="4" />
+  </g>
+</svg>
