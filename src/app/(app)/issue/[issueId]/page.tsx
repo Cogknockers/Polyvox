@@ -49,7 +49,7 @@ type PostRow = {
   created_at: string;
   author_id: string;
   entity_id: string | null;
-  public_entities?: { name: string | null } | null;
+  public_entities?: { name: string | null }[] | null;
 };
 
 export default async function IssueDetailPage({
@@ -241,7 +241,7 @@ export default async function IssueDetailPage({
       userVote: userVotes.get(post.id) ?? 0,
       isOfficial: postType === "ANNOUNCEMENT",
       entityId: post.entity_id,
-      entityName: post.public_entities?.name ?? null,
+      entityName: post.public_entities?.[0]?.name ?? null,
     };
   });
 

@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import Link from "next/link";
 import { MessageSquare, FileText, ThumbsUp, Megaphone } from "lucide-react";
 
@@ -5,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { mockPublicActivity } from "@/lib/mock-public-activity";
 import { formatRelativeTime } from "@/lib/format";
 
-const iconMap: Record<string, JSX.Element> = {
+const iconMap: Record<string, ReactElement> = {
   post: <Megaphone className="h-4 w-4" />,
   comment: <MessageSquare className="h-4 w-4" />,
   issue: <FileText className="h-4 w-4" />,

@@ -24,7 +24,7 @@ type DigestRow = {
   status: "queued" | "sent" | "failed" | "skipped";
   resend_message_id: string | null;
   error: string | null;
-  public_entities?: { name: string | null } | null;
+  public_entities?: { name: string | null }[] | null;
 };
 
 const STATUS_LABELS: Record<DigestRow["status"], string> = {
@@ -133,7 +133,7 @@ export default async function AdminDigestsPage({
                 rows.map((row) => (
                   <TableRow key={row.id}>
                     <TableCell>{formatDate(row.created_at)}</TableCell>
-                    <TableCell>{row.public_entities?.name ?? "Unknown"}</TableCell>
+                    <TableCell>{row.public_entities?.[0]?.name ?? "Unknown"}</TableCell>
                     <TableCell>{maskEmail(row.contact_email)}</TableCell>
                     <TableCell>{row.events_count}</TableCell>
                     <TableCell>

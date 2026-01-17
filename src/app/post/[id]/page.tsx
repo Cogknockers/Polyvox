@@ -26,7 +26,7 @@ type PostRow = {
   author_id: string;
   jurisdiction_id: string;
   entity_id: string | null;
-  public_entities?: { name: string | null } | null;
+  public_entities?: { name: string | null }[] | null;
 };
 
 type ProfileRow = {
@@ -84,7 +84,7 @@ export default async function PostDetailPage({
     author?.display_name ?? author?.username ?? "Community member";
   const authorHandle = author?.username ? `@${author.username}` : null;
   const postType = normalizePostType(postRow.type);
-  const entityName = postRow.public_entities?.name ?? null;
+  const entityName = postRow.public_entities?.[0]?.name ?? null;
 
   const { data: voteRows } = await supabase
     .from("post_votes")

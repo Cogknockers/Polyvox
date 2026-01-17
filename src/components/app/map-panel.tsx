@@ -44,6 +44,9 @@ type MapPanelProps = {
 };
 
 const ZOOM_THRESHOLD = 11;
+const MapContainerAny = MapContainer as any;
+const TileLayerAny = TileLayer as any;
+const GeoJSONAny = GeoJSON as any;
 
 function toRadians(value: number) {
   return (value * Math.PI) / 180;
@@ -66,7 +69,7 @@ function haversineDistance(a: { lat: number; lng: number }, b: { lat: number; ln
 }
 
 function getNearestTownName(center: { lat: number; lng: number }) {
-  let closest = towns[0];
+  let closest: (typeof towns)[number] = towns[0];
   let closestDistance = Number.POSITIVE_INFINITY;
 
   towns.forEach((town) => {
@@ -95,10 +98,10 @@ function MapTitleController({
   onReady,
 }: {
   onTitleChange: (title: string) => void;
-  onReady: (recompute: (map: L.Map) => void) => void;
+  onReady: (recompute: (map: any) => void) => void;
 }) {
   const updateTitle = useCallback(
-    (map: L.Map) => {
+    (map: any) => {
       const zoom = map.getZoom();
       if (zoom <= ZOOM_THRESHOLD) {
         onTitleChange(washoeCounty.name);
@@ -123,7 +126,7 @@ function MapTitleController({
   return null;
 }
 
-function FitBoundsController({ bounds }: { bounds: L.LatLngBounds }) {
+function FitBoundsController({ bounds }: { bounds: any }) {
   const map = useMap();
 
   useEffect(() => {
@@ -137,8 +140,8 @@ function MapResizeController({
   containerRef,
   onTitleRecompute,
 }: {
-  containerRef: React.RefObject<HTMLDivElement>;
-  onTitleRecompute: (map: L.Map) => void;
+  containerRef: React.RefObject<HTMLDivElement | null>;
+  onTitleRecompute: (map: any) => void;
 }) {
   const map = useMap();
 
@@ -200,11 +203,11 @@ export default function MapPanel({
     () => L.geoJSON(washoeCountyGeo as any).getBounds(),
     []
   );
-  const [mapTitle, setMapTitle] = useState(washoeCounty.name);
+  const [mapTitle, setMapTitle] = useState<string>(washoeCounty.name);
   const [showMomentum, setShowMomentum] = useState(true);
   const mapHeightClass = fitHeight ? "h-full min-h-[260px]" : "h-72";
   const mapContainerRef = useRef<HTMLDivElement>(null);
-  const titleRecomputeRef = useRef<(map: L.Map) => void>(() => {});
+  const titleRecomputeRef = useRef<(map: any) => void>(() => {});
 
   return (
     <Card className={cn("shadow-sm", fitHeight && "h-full")}>
@@ -253,7 +256,7 @@ export default function MapPanel({
           )}
         >
           <MapTitleOverlay title={mapTitle} />
-          <MapContainer
+          <MapContainerAny
             center={[defaultLocation.lat, defaultLocation.lng]}
             zoom={10}
             scrollWheelZoom
@@ -270,11 +273,11 @@ export default function MapPanel({
               containerRef={mapContainerRef}
               onTitleRecompute={(map) => titleRecomputeRef.current(map)}
             />
-            <TileLayer
+            <TileLayerAny
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <GeoJSON
+            <GeoJSONAny
               data={washoeCountyGeo as any}
               style={{
                 color: "var(--muted-foreground)",
@@ -296,7 +299,7 @@ export default function MapPanel({
                 </Popup>
               </Marker>
             ))}
-          </MapContainer>
+          </MapContainerAny>
         </div>
 
         {showMomentum ? (

@@ -23,7 +23,7 @@ const locationOptions = jurisdictions.map((jurisdiction) => ({
 
 export default function LocationCommand() {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState(defaultLocation.name);
+  const [value, setValue] = React.useState<string>(defaultLocation.label);
 
   return (
     <>

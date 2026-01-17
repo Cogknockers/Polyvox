@@ -19,8 +19,8 @@ type OfficeRow = {
 
 type HolderRow = {
   office_id: string;
-  public_entities?: { name: string | null } | null;
-  profiles?: { display_name: string | null; username: string | null } | null;
+  public_entities?: { name: string | null }[] | null;
+  profiles?: { display_name: string | null; username: string | null }[] | null;
 };
 
 export default async function CountyOfficesPage({
@@ -78,9 +78,9 @@ export default async function CountyOfficesPage({
 
   const holderMap = new Map<string, string>();
   (holderRows ?? []).forEach((holder) => {
-    const entityName = holder.public_entities?.name ?? null;
+    const entityName = holder.public_entities?.[0]?.name ?? null;
     const profileName =
-      holder.profiles?.display_name ?? holder.profiles?.username ?? null;
+      holder.profiles?.[0]?.display_name ?? holder.profiles?.[0]?.username ?? null;
     const name = entityName ?? profileName;
     if (name) {
       holderMap.set(holder.office_id, name);

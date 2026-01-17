@@ -13,7 +13,7 @@ type SubscriptionRow = {
   contact_email: string;
   is_enabled: boolean;
   unsubscribed_at: string | null;
-  public_entities?: { name: string | null } | null;
+  public_entities?: { name: string | null }[] | null;
 };
 
 export default async function EntityUnsubscribePage({
@@ -56,7 +56,7 @@ export default async function EntityUnsubscribePage({
   }
 
   const entityName =
-    subscription.public_entities?.name ?? "this entity";
+    subscription.public_entities?.[0]?.name ?? "this entity";
   const maskedEmail = maskEmail(subscription.contact_email);
 
   if (!resubscribed && !subscription.unsubscribed_at) {

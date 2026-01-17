@@ -37,6 +37,7 @@ type NotifyEntityDialogProps = {
 type NotifyState = {
   ok?: boolean;
   error?: string;
+  warning?: string;
 };
 
 export default function NotifyEntityDialog({

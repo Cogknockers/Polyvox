@@ -77,7 +77,12 @@ export default function SettingsClient({
                 <FieldGroup>
                   <Field>
                     <FieldLabel>Theme mode</FieldLabel>
-                    <Select value={themeMode} onValueChange={setThemeMode}>
+                    <Select
+                      value={themeMode}
+                      onValueChange={(value) =>
+                        setThemeMode(value as "system" | "light" | "dark")
+                      }
+                    >
                       <SelectTrigger>
                         <SelectValue placeholder="Select mode" />
                       </SelectTrigger>
