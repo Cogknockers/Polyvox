@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 import PolyvoxLogo from "@/components/brand/polyvox-logo";
-import { LoginForm } from "@/components/login-form";
+import { ResetPasswordForm } from "@/components/reset-password-form";
 
-export default function LoginPage() {
+export default function ResetPasswordPage() {
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
       <div className="flex flex-col gap-4 p-6 md:p-10">
@@ -12,14 +12,11 @@ export default function LoginPage() {
         </div>
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs">
-            <LoginForm />
+            <ResetPasswordForm />
             <div className="mt-4 space-y-2 text-center text-sm text-muted-foreground">
-              <p>
-                Don&apos;t have an account?{" "}
-                <Link href="/register" className="underline underline-offset-4">
-                  Join Polyvox
-                </Link>
-              </p>
+              <Link href="/login" className="underline underline-offset-4">
+                Back to sign in
+              </Link>
               <Link href="/" className="underline underline-offset-4">
                 Back to Home
               </Link>
