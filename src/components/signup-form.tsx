@@ -8,14 +8,9 @@ import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
 import { signUpWithPasswordAction, type SignupActionState } from "@/app/(auth)/signup/actions";
 import { Button } from "@/components/ui/button";
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-  FieldSeparator,
-} from "@/components/ui/field";
+import { Field, FieldGroup, FieldLabel, FieldSeparator } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 export function SignupForm({
   className,
@@ -32,97 +27,120 @@ export function SignupForm({
       action={formAction}
       {...props}
     >
-      <FieldGroup>
-        <div className="flex flex-col space-y-2 text-center">
-          <h1 className="text-2xl font-semibold tracking-tight">
-            Plant an acorn in your community
-          </h1>
-          <p className="text-sm text-muted-foreground">
-            Start with one office, one issue, one honest conversation. Growth is the
-            point.
-          </p>
-        </div>
-        <Field>
-          <FieldLabel htmlFor="name">Full Name</FieldLabel>
-          <Input
-            id="name"
-            name="fullName"
-            type="text"
-            placeholder="John Doe"
-            autoComplete="name"
-            required
-          />
-        </Field>
-        <Field>
-          <FieldLabel htmlFor="email">Email</FieldLabel>
-          <Input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="m@example.com"
-            autoComplete="email"
-            required
-          />
-          <FieldDescription>
-            We&apos;ll use this to contact you. We will not share your email
-            with anyone else.
-          </FieldDescription>
-        </Field>
-        <Field>
-          <FieldLabel htmlFor="password">Password</FieldLabel>
-          <Input
-            id="password"
-            name="password"
-            type="password"
-            autoComplete="new-password"
-            required
-          />
-          <FieldDescription>
-            Must be at least 8 characters long.
-          </FieldDescription>
-        </Field>
-        <Field>
-          <FieldLabel htmlFor="confirm-password">Confirm Password</FieldLabel>
-          <Input
-            id="confirm-password"
-            name="confirmPassword"
-            type="password"
-            autoComplete="new-password"
-            required
-          />
-          <FieldDescription>Please confirm your password.</FieldDescription>
-        </Field>
-        <Field>
-          <SubmitButton />
-          {state?.error ? (
-            <p className="text-sm text-destructive" role="status">
-              {state.error}
+      <TooltipProvider>
+        <FieldGroup>
+          <div className="flex flex-col space-y-2 text-center">
+            <h1 className="text-2xl font-semibold tracking-tight">
+              Plant an acorn in your community
+            </h1>
+            <p className="text-sm text-muted-foreground">
+              Start with one office, one issue, one honest conversation. Growth is the
+              point.
             </p>
-          ) : null}
-          {state?.success ? (
-            <p className="text-sm text-muted-foreground" role="status">
-              {state.success}
-            </p>
-          ) : null}
-        </Field>
-        <FieldSeparator>Or continue with</FieldSeparator>
-        <Field>
-          <Button
-            variant="outline"
-            type="button"
-            onClick={(event) => {
-              event.preventDefault();
-              toast({
-                title: "Google sign-in coming soon",
-                description: "UI preview only. OAuth will be wired later.",
-              });
-            }}
-          >
-            <GoogleIcon className="mr-2 h-4 w-4" />
-            Continue with Google
-          </Button>
-        </Field>
-      </FieldGroup>
+          </div>
+          <Field>
+            <FieldLabel htmlFor="name">Full Name</FieldLabel>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Input
+                  id="name"
+                  name="fullName"
+                  type="text"
+                  placeholder="John Doe"
+                  autoComplete="name"
+                  required
+                />
+              </TooltipTrigger>
+              <TooltipContent className="text-xs">
+                Use the name you want displayed to your community.
+              </TooltipContent>
+            </Tooltip>
+          </Field>
+          <Field>
+            <FieldLabel htmlFor="email">Email</FieldLabel>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="m@example.com"
+                  autoComplete="email"
+                  required
+                />
+              </TooltipTrigger>
+              <TooltipContent className="text-xs">
+                We will use this to contact you. We will not share your email with
+                anyone else.
+              </TooltipContent>
+            </Tooltip>
+          </Field>
+          <Field>
+            <FieldLabel htmlFor="password">Password</FieldLabel>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="new-password"
+                  required
+                />
+              </TooltipTrigger>
+              <TooltipContent className="text-xs">
+                Must be at least 8 characters long.
+              </TooltipContent>
+            </Tooltip>
+          </Field>
+          <Field>
+            <FieldLabel htmlFor="confirm-password">Confirm Password</FieldLabel>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Input
+                  id="confirm-password"
+                  name="confirmPassword"
+                  type="password"
+                  autoComplete="new-password"
+                  required
+                />
+              </TooltipTrigger>
+              <TooltipContent className="text-xs">
+                Re-enter your password to confirm.
+              </TooltipContent>
+            </Tooltip>
+          </Field>
+          <Field>
+            <SubmitButton />
+            {state?.error ? (
+              <p className="text-sm text-destructive" role="status">
+                {state.error}
+              </p>
+            ) : null}
+            {state?.success ? (
+              <p className="text-sm text-muted-foreground" role="status">
+                {state.success}
+              </p>
+            ) : null}
+          </Field>
+          <FieldSeparator>Or continue with</FieldSeparator>
+          <Field>
+            <Button
+              variant="outline"
+              type="button"
+              onClick={(event) => {
+                event.preventDefault();
+                toast({
+                  title: "Google sign-in coming soon",
+                  description: "UI preview only. OAuth will be wired later.",
+                });
+              }}
+            >
+              <GoogleIcon className="mr-2 h-4 w-4" />
+              Continue with Google
+            </Button>
+          </Field>
+        </FieldGroup>
+      </TooltipProvider>
       <div className="space-y-2">
         <p className="px-8 text-center text-sm text-muted-foreground">
           Already have an account?{" "}

@@ -15,6 +15,7 @@ import {
   FieldSeparator,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 export function LoginForm({
   className,
@@ -31,71 +32,87 @@ export function LoginForm({
       action={formAction}
       {...props}
     >
-      <FieldGroup>
-        <div className="flex flex-col space-y-2 text-center">
-          <h1 className="text-2xl font-semibold tracking-tight">
-            Return to the public arena
-          </h1>
-          <p className="text-sm text-muted-foreground">
-            Polyvox helps communities surface problems, test leadership, and converge
-            transparently—before Election Day.
-          </p>
-        </div>
-        <Field>
-          <FieldLabel htmlFor="email">Email</FieldLabel>
-          <Input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="m@example.com"
-            autoComplete="email"
-            required
-          />
-        </Field>
-        <Field>
-          <div className="flex items-center">
-            <FieldLabel htmlFor="password">Password</FieldLabel>
-            <Link
-              href="/forgot-password"
-              className="ml-auto text-sm underline-offset-4 hover:underline"
-            >
-              Forgot your password?
-            </Link>
-          </div>
-          <Input
-            id="password"
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            required
-          />
-        </Field>
-        <Field>
-          <SubmitButton />
-          {state?.error ? (
-            <p className="text-sm text-destructive" role="status">
-              {state.error}
+      <TooltipProvider>
+        <FieldGroup>
+          <div className="flex flex-col space-y-2 text-center">
+            <h1 className="text-2xl font-semibold tracking-tight">
+              Return to the public arena
+            </h1>
+            <p className="text-sm text-muted-foreground">
+              Polyvox helps communities surface problems, test leadership, and converge
+              transparently-before Election Day.
             </p>
-          ) : null}
-        </Field>
-        <FieldSeparator>Or continue with</FieldSeparator>
-        <Field>
-          <Button
-            variant="outline"
-            type="button"
-            onClick={(event) => {
-              event.preventDefault();
-              toast({
-                title: "Google sign-in coming soon",
-                description: "UI preview only. OAuth will be wired later.",
-              });
-            }}
-          >
-            <GoogleIcon className="mr-2 h-4 w-4" />
-            Continue with Google
-          </Button>
-        </Field>
-      </FieldGroup>
+          </div>
+          <Field>
+            <FieldLabel htmlFor="email">Email</FieldLabel>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="m@example.com"
+                  autoComplete="email"
+                  required
+                />
+              </TooltipTrigger>
+              <TooltipContent className="text-xs">
+                Use the email linked to your account.
+              </TooltipContent>
+            </Tooltip>
+          </Field>
+          <Field>
+            <div className="flex items-center">
+              <FieldLabel htmlFor="password">Password</FieldLabel>
+              <Link
+                href="/forgot-password"
+                className="ml-auto text-sm underline-offset-4 hover:underline"
+              >
+                Forgot your password?
+              </Link>
+            </div>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                />
+              </TooltipTrigger>
+              <TooltipContent className="text-xs">
+                Enter the password for your Polyvox account.
+              </TooltipContent>
+            </Tooltip>
+          </Field>
+          <Field>
+            <SubmitButton />
+            {state?.error ? (
+              <p className="text-sm text-destructive" role="status">
+                {state.error}
+              </p>
+            ) : null}
+          </Field>
+          <FieldSeparator>Or continue with</FieldSeparator>
+          <Field>
+            <Button
+              variant="outline"
+              type="button"
+              onClick={(event) => {
+                event.preventDefault();
+                toast({
+                  title: "Google sign-in coming soon",
+                  description: "UI preview only. OAuth will be wired later.",
+                });
+              }}
+            >
+              <GoogleIcon className="mr-2 h-4 w-4" />
+              Continue with Google
+            </Button>
+          </Field>
+        </FieldGroup>
+      </TooltipProvider>
       <div className="space-y-2">
         <p className="px-8 text-center text-sm text-muted-foreground">
           Don&apos;t have an account?{" "}
