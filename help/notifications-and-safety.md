@@ -1,0 +1,12 @@
+# Notifications and Safety
+
+Polyvox prioritizes safety and accountability.
+
+Key rules:
+- In-app notifications come first
+- Email is used carefully and sparingly
+- Only verified public contact channels receive emails
+- Rate limits and digests prevent abuse
+- Every notification is logged and auditable
+
+Polyvox is designed to inform, not harass.

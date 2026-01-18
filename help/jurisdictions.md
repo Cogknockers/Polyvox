@@ -1,0 +1,21 @@
+# Jurisdictions in Polyvox
+
+Every action in Polyvox belongs to a jurisdiction.
+
+## Supported levels
+- City / Town
+- County
+- State
+- National
+
+There is no floating content.
+
+This matters because:
+- responsibility is clearer
+- accountability is targeted
+- patterns across places become visible
+
+You always know:
+- where an issue lives
+- who can fix it
+- what level of government should respond
