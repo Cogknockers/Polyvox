@@ -13,13 +13,7 @@ export default function SignupPage() {
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs">
             <SignupForm />
-            <div className="mt-4 space-y-2 text-center text-sm text-muted-foreground">
-              <p>
-                Already have an account?{" "}
-                <Link href="/login" className="underline underline-offset-4">
-                  Sign in
-                </Link>
-              </p>
+            <div className="mt-4 text-center text-sm text-muted-foreground">
               <Link href="/" className="underline underline-offset-4">
                 Back to Home
               </Link>

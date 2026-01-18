@@ -13,10 +13,11 @@ export default function ForgotPasswordPage() {
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs">
             <ForgotPasswordForm />
-            <div className="mt-4 space-y-2 text-center text-sm text-muted-foreground">
+            <div className="mt-4 text-center text-sm text-muted-foreground">
               <Link href="/login" className="underline underline-offset-4">
-                Back to sign in
+                Back to Login Page
               </Link>
+              <span className="px-2">|</span>
               <Link href="/" className="underline underline-offset-4">
                 Back to Home
               </Link>
